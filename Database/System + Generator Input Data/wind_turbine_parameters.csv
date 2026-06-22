@@ -1,0 +1,4 @@
+Farm Number,Turbine Model,Turbine Capacity (kW),Farm Capacity (kW),height (m),cut-in speed (m/s),rated speed (m/s),cut-out speed (m/s),x^3 coefficient,x^2 coefficient,x^1 coefficient,x^0 coefficient,"offshore? (1=offshore, 0=onshore)"
+1,GE 1.5MW sle,1500,500000,77,3.5,12,25,-3.2564,81.678,-450.63,732.12,0
+2,GE 1.5MW sle,1500,1200000,77,3.5,12,25,-3.2564,81.678,-450.63,732.12,0
+3,IEA-RWT,15000,2000000,164,3,10.65843263,25,10.607,27.066,-57.729,-317.44,1
