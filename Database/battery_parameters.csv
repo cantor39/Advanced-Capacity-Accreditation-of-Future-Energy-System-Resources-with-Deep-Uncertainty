@@ -1,0 +1,5 @@
+Battery Farm Number,Maximum Battery Capacity (MWh),Minimum Battery Capacity (MWh),Maximum Charge Rate (MW),Maximum Discharge Rate (MW),Charge/Discharge Efficiency
+1,700,0,350,350,0.96
+2,1000,0,500,500,0.96
+3,2000,0,1000,1000,0.96
+
