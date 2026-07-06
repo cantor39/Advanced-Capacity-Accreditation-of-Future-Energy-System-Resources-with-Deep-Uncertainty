@@ -3,10 +3,10 @@ function [Var_UC_I_LS, final_Var_UC_I, final_Var_UC_I_SU, final_Var_UC_I_SD, fin
    init_Var_UC_I, init_Var_UC_I_SU, init_Var_UC_I_SD, init_Var_UC_I_LS, init_Var_UC_I_Batt_Dis, init_Var_UC_I_Batt_Char, init_Var_UC_P, init_Var_UC_Batt_SOC, init_Var_UC_Batt_Dis, init_Var_UC_Batt_Char, init_Var_UC_LS)
 
 %Ensures all need folder paths are included
-addpath(genpath('C:\Users\escan\OneDrive\Desktop\Grad Work\ELCC Work\UC\UC\Database'));
-addpath(genpath('C:\Users\escan\OneDrive\Desktop\Grad Work\ELCC Work\UC\UC\Database\Monthly_Load_Weather_Data'));
-addpath(genpath('C:\Users\escan\OneDrive\Desktop\Grad Work\ELCC Work\YALMIP-master\YALMIP-master'));
-addpath(genpath('C:\Users\escan\OneDrive\Desktop\Grad Work\ELCC Work\UC\UC\Database\Yearly_Forcasted_PJM_Load_Data\combined_hourly_forecast'));
+addpath(genpath('Database Folder'));
+addpath(genpath('Weather Data Folder'));
+addpath(genpath('YALMIP Folder'));
+addpath(genpath('Load Data Folder'));
 
 
 
