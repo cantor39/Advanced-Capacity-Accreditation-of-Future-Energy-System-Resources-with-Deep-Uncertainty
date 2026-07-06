@@ -34,7 +34,7 @@ series_weather = num_weather_samples/num_par_weather;
                 
     
             end
-            save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/adjusted__load_Results')
+            save('adjusted__load_Results')
        end
        
         %weather_sample_LOLH
