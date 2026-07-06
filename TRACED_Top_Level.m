@@ -2,7 +2,7 @@ clearvars -except Date_Dispatch hourly_irr hourly_offshore_wind hourly_onshore_w
 %clear all
 clc
 tic
-addpath(genpath('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon'));
+addpath(genpath('Insert Project Folder'));
 
 
 %% Initialize System Settings
@@ -35,7 +35,7 @@ end
     initial_LA=0;
     base_system_load_adjustment = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,0,0], [0,0,0], initial_LA);
     
-    save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+    save('Save Progress')
 
 
 
@@ -46,27 +46,27 @@ end
         
         %Portfolio Load Adjustment and Capacity Credit
         wind_only_portfolio_system_load_adjustment = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
         %First-In Load Adjustments
         wind_only_first_in_system_load_adjustment(1) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,0,0], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress'))
 
         wind_only_first_in_system_load_adjustment(2) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,1,0], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_only_first_in_system_load_adjustment(3) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,1], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
         %Last-In Load Adjustments
         wind_only_last_in_system_load_adjustment(1) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,1,1], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
         wind_only_last_in_system_load_adjustment(2) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,0,1], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
         wind_only_last_in_system_load_adjustment(3) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,0], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
        
         %Calculate Individual Generator TRACED Capacity Credits
         for c = 1:3
@@ -85,7 +85,7 @@ end
             wind_only_TRACED_ELCC(c) =  wind_only_last_in_ELCC(c) + wind_only_delta*wind_only_individual_interactive_effect(c);
 
         end
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
 
 %% Case 2 - Solar Only Case
@@ -93,27 +93,27 @@ end
        
         %Portfolio Load Adjustment and Capacity Credit
         solar_only_portfolio_system_load_adjustment = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,1,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         %First-In Load Adjustments
         solar_only_first_in_system_load_adjustment(1) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_only_first_in_system_load_adjustment(2) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,1,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_only_first_in_system_load_adjustment(3) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,0,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         %Last-In Load Adjustments
         solar_only_last_in_system_load_adjustment(1) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,1,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_only_last_in_system_load_adjustment(2) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,0,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_only_last_in_system_load_adjustment(3) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,1,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
 
         %Calculate Individual Generator TRACED Capacity Credits
@@ -133,7 +133,7 @@ end
             solar_only_Delta_ELCC(c) =  solar_only_last_in_ELCC(c) + solar_only_delta*solar_only_individual_interactive_effect(c);
 
         end
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
 
 
@@ -142,7 +142,7 @@ end
     disp("Running Wind+Solar Case")
 
         wind_and_solar_portfolio_system_load_adjustment = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,1,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         %First-In Load Adjustments
         %Reuses FI load adjustments from Cases 1 and 2
@@ -155,22 +155,22 @@ end
 
         %Last-In Load Adjustments
         wind_and_solar_last_in_system_load_adjustment(1) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,1,1], [1,1,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        ssave('Save Progress')
 
         wind_and_solar_last_in_system_load_adjustment(2) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,0,1], [1,1,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
        
         wind_and_solar_last_in_system_load_adjustment(3) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,0], [1,1,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_and_solar_last_in_system_load_adjustment(4) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [0,1,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_and_solar_last_in_system_load_adjustment(5) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,0,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
                 
         wind_and_solar_last_in_system_load_adjustment(6) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,1,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
         %Calculate Individual Generator TRACED Capacity Credits
         for c = 1:6
@@ -190,14 +190,14 @@ end
             wind_and_solar_Delta_ELCC(c) =  wind_and_solar_last_in_ELCC(c) + wind_and_solar_delta*wind_and_solar_individual_interactive_effect(c);
 
         end
-          save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+          save('Save Progress')
 
 
 %% Case 4 - Solar+Battery Case
 disp("Running Wind+Solar+Battery Case")
 
         solar_battery_portfolio_system_load_adjustment = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,1,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         %First-In Load Adjustments
 
@@ -208,33 +208,33 @@ disp("Running Wind+Solar+Battery Case")
 
         
         solar_battery_first_in_system_load_adjustment(4) = wind_solar_battery_first_in_system_load_adjustment(7);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
             
         solar_battery_first_in_system_load_adjustment(5) = wind_solar_battery_first_in_system_load_adjustment(8);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_battery_first_in_system_load_adjustment(6) = wind_solar_battery_first_in_system_load_adjustment(9);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
 
         %Last-In Load Adjustments
         solar_battery_last_in_system_load_adjustment(1) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,1,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        ssave('Save Progress')
         
         solar_battery_last_in_system_load_adjustment(2) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,0,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_battery_last_in_system_load_adjustment(3) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,1,0], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_battery_last_in_system_load_adjustment(4) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,1,1], [0,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_battery_last_in_system_load_adjustment(5) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,1,1], [1,0,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         solar_battery_last_in_system_load_adjustment(6) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,1,1], [1,1,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
 
         %Calculate Individual Generator TRACED Capacity Credits
@@ -256,7 +256,7 @@ disp("Running Wind+Solar+Battery Case")
             solar_battery_Delta_ELCC(c) =  solar_battery_last_in_ELCC(c) + solar_battery_delta*solar_battery_individual_interactive_effect(c);
         
         end
-           save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+           save('Save Progress')
 
 
 
@@ -270,75 +270,75 @@ disp("Running Wind+Solar+Battery Case")
 %% Transmission Sensitivity Analysis (Wind+Solar+Battery Case)
 
     disp("Running Transmission Sensitivity Analysis")
-    load("/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Final_Results/June_1Month_Final_Results.mat");    
+    load("June 1-Month Results"); %Keeps weather conditions same as the June Results for Sensitivity Analysis    
     clearvars -except Date_Dispatch hourly_irr hourly_offshore_wind hourly_onshore_wind hourly_temp hourly_turbine_SD Load_System_DAF_Dis
         
 
         %Base System
         base_system_load_adjustment = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,0,0], [0,0,0], 0);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         %Portfolio System
         wind_solar_battery_portfolio_system_load_adjustment = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,1,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
         %First-In Load Adjustments
         wind_solar_battery_first_in_system_load_adjustment(1) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,0,0], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_solar_battery_first_in_system_load_adjustment(2) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,1,0], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_solar_battery_first_in_system_load_adjustment(3) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,1], [0,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_solar_battery_first_in_system_load_adjustment(4) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [1,0,0], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_solar_battery_first_in_system_load_adjustment(5) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,1,0], [0,0,0], base_system_load_adjustment);      
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_solar_battery_first_in_system_load_adjustment(6) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,0,1], [0,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         
         wind_solar_battery_first_in_system_load_adjustment(7) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,0,0], [1,0,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
         wind_solar_battery_first_in_system_load_adjustment(8) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,0,0], [0,1,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
 
         wind_solar_battery_first_in_system_load_adjustment(9) = adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,0,0], [0,0,0], [0,0,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
      
         %Last-in Load Adjustments
         wind_solar_battery_last_in_system_load_adjustment(1) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [0,1,1], [1,1,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
      
         wind_solar_battery_last_in_system_load_adjustment(2) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,0,1], [1,1,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_solar_battery_last_in_system_load_adjustment(3) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,0], [1,1,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_solar_battery_last_in_system_load_adjustment(4) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [0,1,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
        
         wind_solar_battery_last_in_system_load_adjustment(5) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,0,1], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         wind_solar_battery_last_in_system_load_adjustment(6) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,1,0], [1,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
         
         wind_solar_battery_last_in_system_load_adjustment(7) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,1,1], [0,1,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
        
         wind_solar_battery_last_in_system_load_adjustment(8) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,1,1], [1,0,1], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
        
         wind_solar_battery_last_in_system_load_adjustment(9) =  adjust_load(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, hourly_turbine_SD, [1,1,1], [1,1,1], [1,1,0], base_system_load_adjustment);
-        save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+        save('Save Progress')
         
 
         %Calculate Individual Generator TRACED Capacity Credits
@@ -360,7 +360,7 @@ disp("Running Wind+Solar+Battery Case")
             wind_solar_battery_Delta_ELCC(c) =  wind_solar_battery_last_in_ELCC(c) + wind_solar_battery_alpha*wind_solar_battery_individual_interactive_effect(c);
         
         end
-           save('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Test_Results')
+           save('Save Progress')
 
 
 
