@@ -67,9 +67,9 @@ function...
  VOLL_Price,...
  For_Out_Rate] = UC_Database(Date_Dispatch, hourly_temp, hourly_irr, hourly_onshore_wind, hourly_offshore_wind, Load_System_DAF_Dis, Scaler_Wind, Scaler_Solar)
 
-addpath('/opt/gurobi1203/linux64/matlab')
-setenv('GRB_LICENSE_FILE', '/home/ifrost/gurobi.lic');
-addpath(genpath('/home/ifrost/cantor39/ELCC Work/YALMIP-master'))
+
+setenv('Gurobi License);
+addpath(genpath('YALMIP Folder'))
 
 
 
@@ -96,12 +96,12 @@ Path_Data = Ini_Path(1:end - Ini_Size - 1); %Returns the location of one folder 
 
 
 
-Gen_Capacity     = readmatrix('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Database/Gen_Capacity.csv');
-Gen_Price        = readmatrix('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Database/Gen_Price.csv');
-Branch           = readmatrix('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Database/Branch.csv');
-Load_Bus_Index   = readmatrix('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Database/Load_Bus_Index.csv');
-Load_Bus_Weight  = readmatrix('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Database/Load_Bus_Weight.csv');
-batt_data        = readmatrix('/home/ifrost/cantor39/ELCC Work/UC/UC/v2 - Rolling Horizon/Database/battery_parameters.csv');
+Gen_Capacity     = readmatrix('Gen_Capacity.csv');
+Gen_Price        = readmatrix('Gen_Price.csv');
+Branch           = readmatrix('Branch.csv');
+Load_Bus_Index   = readmatrix('Load_Bus_Index.csv');
+Load_Bus_Weight  = readmatrix('Load_Bus_Weight.csv');
+batt_data        = readmatrix('battery_parameters.csv');
 %
 %% ---------------------------- Basic Data ----------------------------- %%
 
